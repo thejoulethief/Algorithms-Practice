@@ -1,17 +1,15 @@
-// Checks if any swaps were performed in a while loop
-// If not, returns arr
-// Else uses a for loop to iterate through each element, if a[i] > a[i+1], iy swaps them.
-
 function bubble_sort(arr) {
-  let swap = 1;
-  while (swap != 0) {
-    swap = 0;
+  let swaps = 1;
+  while (swaps != 0) {
+    swaps = 0;
     for (let i = 0; i < arr.length - 1; i++) {
-      if (arr[i] > arr[i + 1]) {
-        let temp = arr[i];
-        arr[i] = arr[i + 1];
-        arr[i + 1] = temp;
-        swap = 1;
+      for (let j = 0; j < arr.length - i - 1; j++) {
+        if (arr[j] > arr[j + 1]) {
+          let temp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
+          swaps = 1;
+        }
       }
     }
   }

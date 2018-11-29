@@ -1,43 +1,44 @@
-var arr = [123,23,45,67,89,0];
-
-//Merge sort
-
-function merge_sort(arr){
-  if(arr.length < 2){
+function merge_sort(arr) {
+  if (arr.length < 2) {
     return arr;
   }
-  var middle = Math.floor((arr.length)/2);
-  var left = arr.slice(0, middle);
-  var right = arr.slice(middle, arr.length);
+  let middle = Math.floor(arr.length / 2);
+  let left = arr.slice(0, middle);
+  let right = arr.slice(middle, arr.length);
 
   return merge(merge_sort(left), merge_sort(right));
 }
 
+function merge(left, right) {
+  let result = [];
 
-function merge(left, right){
-  let result =[];
-
-  while(left.length && right.length){
-      //if(left[0] <= right[0]){
-      //    result.push(left.shift());
-      //}
-       left[0] <= right[0] ? result.push(left.shift()) : result.push(right.shift());
-      //else{
-      //    result.push(right.shift());
-      //}
+  while (left.length && right.length) {
+    left[0] < right[0] ? result.push(left.shift()) : result.push(right.shift());
   }
 
-  while(left.length){
+  while (left.length) {
     result.push(left.shift());
   }
-  while(right.length){
+
+  while (right.length) {
     result.push(right.shift());
   }
 
-  //console.log(result);
   return result;
 }
+// function main() {
+//   var array = [
+//     [2, 3, 76, 450, 862, 1232, 12],
+//     [22, 34, 576, 240, 866, 32, 12],
+//     [12, 34, 76, 40, 82, 22, 12],
+//     [0, 0, 22, 36, 6, 5, 82, 12, 12]
+//   ];
 
-const list = [2, 5,6,5, 3,1,0];
-console.log(merge_sort(arr));
-console.log(merge_sort(list));
+//   for (let i = 0; i < 4; i++) {
+//     console.log(merge_sort(array[i]));
+//   }
+// }
+
+// main();
+
+console.log(merge_sort([345678, 1, 345, 23, 9, 4, 1]));

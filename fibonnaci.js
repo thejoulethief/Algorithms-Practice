@@ -1,36 +1,40 @@
-//0,1,1,2,3,5
-//index starts from 0
-
-function fibonnaci(n){
-  if(n==0){
-    return 0;
-  }
-  else if(n==1){
-    return 1;
-  }
-  else{
-    return fibonnaci(n-1) + fibonnaci(n-2);
-  }
-
-}
-
-var num=20;
-console.log(fibonnaci(num));
-console.log(iter_fibonnaci(num));
-
-function iter_fibonnaci(n){
-  var num1= 0;
-  var num2=1;
-  var sum;
-
-  if(n<=1){
+function fib_rec(n) {
+  if (n < 2) {
     return n;
+  } else {
+    return fib_rec(n - 1) + fib_rec(n - 2);
   }
-  while(n>1){
-    sum = num1+num2;
-    num1=num2;
-    num2=sum;
-    n--;
-  }
-  return sum;
 }
+
+console.log(fib_rec(10));
+
+//0,1,1,2
+
+// function fib_it(n) {
+//   if (n <= 2) {
+//     return n;
+//   }
+
+//   let firstNum = 0;
+//   let SecondNum = 1;
+//   for (let i = 3; i <= n; i++) {
+//     sum = SecondNum + firstNum;
+//     firstNum = SecondNum;
+//     SecondNum = sum;
+//   }
+//   return SecondNum;
+// }
+//0,1,1,2
+function fib_it(n) {
+  let x = 0;
+  let y = 1;
+  let z = 1;
+  for (let i = 0; i < n; i++) {
+    x = y;
+    y = z;
+    z = x + y;
+  }
+  return x;
+}
+
+console.log(fib_it(0));
